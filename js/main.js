@@ -22,13 +22,25 @@ export const main = {
   },
   printThemeInfo: () => {
     console.log(
-      `      ______ __  __  ______  __    __  ______                       \r\n     \/\\__  _\/\\ \\_\\ \\\/\\  ___\\\/\\ \"-.\/  \\\/\\  ___\\                      \r\n     \\\/_\/\\ \\\\ \\  __ \\ \\  __\\\\ \\ \\-.\/\\ \\ \\  __\\                      \r\n        \\ \\_\\\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\ \\_\\ \\_____\\                    \r\n         \\\/_\/ \\\/_\/\\\/_\/\\\/_____\/\\\/_\/  \\\/_\/\\\/_____\/                    \r\n                                                               \r\n ______  ______  _____   ______  ______ __  __   __  ______    \r\n\/\\  == \\\/\\  ___\\\/\\  __-.\/\\  ___\\\/\\  ___\/\\ \\\/\\ \"-.\\ \\\/\\  ___\\   \r\n\\ \\  __<\\ \\  __\\\\ \\ \\\/\\ \\ \\  __\\\\ \\  __\\ \\ \\ \\ \\-.  \\ \\  __\\   \r\n \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\\\\"\\_\\ \\_____\\ \r\n  \\\/_\/ \/_\/\\\/_____\/\\\/____\/ \\\/_____\/\\\/_\/   \\\/_\/\\\/_\/ \\\/_\/\\\/_____\/\r\n                                                               \r\n  Github: https:\/\/github.com\/EvanNotFound\/hexo-theme-redefine`,
-    ); // console log message
+      `\r\n     ______ __  __  ______  __    __  ______                       
+     /\\__  _/\\ \\_\\ \\/\\  ___\\/\\ "-./  \\/\\  ___\\                      
+     \\/_/\\ \\\\ \\  __ \\ \\  __\\\\ \\ \\-./\\ \\ \\  __\\                      
+        \\ \\_\\\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\ \\_\\ \\_____\\                    
+         \\/_/ \\/_/\\/_/\\/_____/\\/_/  \\/_/\\/_____/                    
+                                                              
+ ______  ______  _____   ______  ______ __  __   __  ______    
+/\\  == \\/\\  ___\\/\\  __-./\\  ___\\/\\  ___/\\ \\/\\ "-.\\ \\/\\  ___\\   
+\\ \\  __<\\ \\  __\\\\ \\ \\/\\ \\ \\  __\\\\ \\  __\\ \\ \\ \\ \\-.  \\ \\  __\\   
+ \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\\\\\_\\ \\_____\\ 
+  \\/_/ \\/_/\\/_____/\\/____/ \\/_____/\\/_/   \\/_/\\/_/ \\/_/\\/_____/ 
+                                                              
+  Github: https://github.com/EvanNotFound/hexo-theme-redefine`
+    );
   },
   setStyleStatus: () => {
     localStorage.setItem(
       main.localStorageKey,
-      JSON.stringify(main.styleStatus),
+      JSON.stringify(main.styleStatus)
     );
   },
   getStyleStatus: () => {
@@ -52,7 +64,6 @@ export const main = {
       location.pathname === config.root
     ) {
       initTyped("subtitle");
-      initHitokoto(); // 调用 initHitokoto 函数
     }
 
     if (theme.navbar.search.enable === true) {
@@ -69,22 +80,6 @@ export const main = {
   },
 };
 
-function fetchHitokoto() {
-  fetch('https://v1.hitokoto.cn?c=d')
-    .then(response => response.json())
-    .then(data => {
-      const hitokotoElement = document.getElementById('hitokoto');
-      if (hitokotoElement) {
-        hitokotoElement.innerText = data.hitokoto;
-      }
-    });
-}
-
-function initHitokoto() {
-  fetchHitokoto();
-  setInterval(fetchHitokoto, 15000); // 每15秒获取一次新句子
-}
-
 export function initMain() {
   main.printThemeInfo();
   main.refresh();
@@ -96,4 +91,6 @@ try {
   swup.hooks.on("page:view", () => {
     main.refresh();
   });
-} catch (e) {}
+} catch (e) {
+  console.error(e);
+}
