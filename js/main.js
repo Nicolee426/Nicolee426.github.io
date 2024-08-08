@@ -52,9 +52,7 @@ export const main = {
       location.pathname === config.root
     ) {
       initTyped("subtitle");
-    }
-    if (theme.home_banner.subtitle.hitokoto.enable) {
-      initHitokoto();
+      initHitokoto(); // 调用 initHitokoto 函数
     }
 
     if (theme.navbar.search.enable === true) {
