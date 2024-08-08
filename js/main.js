@@ -52,6 +52,7 @@ export const main = {
       location.pathname === config.root
     ) {
       initTyped("subtitle");
+      initHitokoto(); // 调用 initHitokoto 函数
     }
 
     if (theme.navbar.search.enable === true) {
@@ -67,6 +68,22 @@ export const main = {
     }
   },
 };
+
+function fetchHitokoto() {
+  fetch('https://v1.hitokoto.cn?c=d')
+    .then(response => response.json())
+    .then(data => {
+      const hitokotoElement = document.getElementById('hitokoto');
+      if (hitokotoElement) {
+        hitokotoElement.innerText = data.hitokoto;
+      }
+    });
+}
+
+function initHitokoto() {
+  fetchHitokoto();
+  setInterval(fetchHitokoto, 15000); // 每15秒获取一次新句子
+}
 
 export function initMain() {
   main.printThemeInfo();
