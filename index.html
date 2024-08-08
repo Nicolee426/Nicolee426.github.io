@@ -277,11 +277,13 @@
     <div class="content mt-8 flex flex-col justify-center items-center">
         <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
         
+             style="color: #000000; font-size: 3.5rem;"
+        
         >
-            Hello Quant
+            <h1 style="color: #000000; font-size: 3.5rem;">Hello Quant</h1>
             
             
-                <p><i id="subtitle"></i></p>
+                <p class="home-banner-subtitle" id="hitokoto"></p>
             
         </div>
         
@@ -328,13 +330,35 @@
         
     </div>
     <script>
-        const scrollToMain = ()=> {
+        const scrollToMain = () => {
             console.log('scroll');
             const target = document.querySelector('.main-content-container');
-            target.scrollIntoView({ behavior: 'smooth'});
+            target.scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Fetch Hitokoto and update subtitle
+        const fetchHitokoto = () => {
+            fetch('https://v1.hitokoto.cn?c=d')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('hitokoto').innerText = data.hitokoto;
+                });
+        };
+
+        // Initialize Hitokoto
+        const initHitokoto = () => {
+            const hitokotoEnable = true;
+            const hitokotoInterval = 15000;
+            if (hitokotoEnable) {
+                fetchHitokoto();
+                setInterval(fetchHitokoto, hitokotoInterval);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', initHitokoto);
     </script>
 </div>
+
     
 
     <div class="main-content-container">
