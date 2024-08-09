@@ -327,6 +327,10 @@
             </div>
         
     </div>
+
+    <!-- Snowflake effect -->
+    <div id="snowflakes" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; display: none;"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         let typedInstance;
@@ -345,6 +349,33 @@
             }
         };
 
+        // Create snowflakes
+        const createSnowflake = () => {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.innerHTML = '❄';
+            document.getElementById('snowflakes').appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        };
+
+        // Snowflake animation
+        const startSnow = () => {
+            document.getElementById('snowflakes').style.display = 'block';
+            const snowInterval = setInterval(createSnowflake, 200);
+
+            setTimeout(() => {
+                clearInterval(snowInterval);
+                document.getElementById('snowflakes').style.display = 'none';
+            }, 10000);
+        };
+
         // Fetch Hitokoto and update subtitle
         const fetchHitokoto = () => {
             fetch('https://v1.hitokoto.cn?c=d&amp;c=j&amp;c=k')
@@ -359,15 +390,19 @@
                         backDelay: 2000,
                         loop: false,
                         smartBackspace: true,
+                        showCursor: false, // Hide the blinking cursor
                         onComplete: (self) => {
                             setTimeout(() => {
-                                fetchHitokoto();
-                            }, 7000);
+                                self.cursor.remove();  // Remove the cursor after typing is done
+                                self.destroy();  // Destroy instance to reset typed text
+                                setTimeout(fetchHitokoto, 7000); // Fetch next sentence after a delay
+                            }, 7000 - 30 * data.hitokoto.length);
                         },
-                        fadeOut: true,
-                        fadeOutClass: 'typed-fade-out',
-                        fadeOutDelay: 500,
-                        showCursor: false, // Hide the blinking cursor
+                        onStringTyped: (arrayPos, self) => {
+                            setTimeout(() => {
+                                self.backspace(); // Start backspacing after the sentence is fully typed
+                            }, 2000);
+                        }
                     });
                 });
         };
@@ -380,9 +415,30 @@
             }
         };
 
-        document.addEventListener('DOMContentLoaded', initHitokoto);
+        document.addEventListener('DOMContentLoaded', () => {
+            initHitokoto();
+            startSnow(); // Start snowflake effect
+        });
     </script>
+
+    <style>
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
 </div>
+
     
 
     <div class="main-content-container">
