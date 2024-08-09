@@ -359,19 +359,15 @@
                         backDelay: 2000,
                         loop: false,
                         smartBackspace: true,
-                        showCursor: false, // Hide the blinking cursor
                         onComplete: (self) => {
                             setTimeout(() => {
-                                self.cursor.remove();  // Remove the cursor after typing is done
-                                self.destroy();  // Destroy instance to reset typed text
-                                setTimeout(fetchHitokoto, 7000); // Fetch next sentence after a delay
-                            }, 7000 - 30 * data.hitokoto.length);
+                                fetchHitokoto();
+                            }, 7000);
                         },
-                        onStringTyped: (arrayPos, self) => {
-                            setTimeout(() => {
-                                self.backspace(); // Start backspacing after the sentence is fully typed
-                            }, 2000);
-                        }
+                        fadeOut: true,
+                        fadeOutClass: 'typed-fade-out',
+                        fadeOutDelay: 500,
+                        showCursor: false, // Hide the blinking cursor
                     });
                 });
         };
@@ -387,7 +383,6 @@
         document.addEventListener('DOMContentLoaded', initHitokoto);
     </script>
 </div>
-
     
 
     <div class="main-content-container">
