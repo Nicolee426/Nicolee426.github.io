@@ -391,6 +391,7 @@
                         loop: false,
                         smartBackspace: true,
                         showCursor: true, // Show the blinking cursor during typing
+                        cursorChar: '|', // Define the cursor character
                         onComplete: (self) => {
                             setTimeout(() => {
                                 self.destroy();  // Destroy instance to reset typed text
@@ -433,6 +434,21 @@
         @keyframes fall {
             to {
                 transform: translateY(100vh);
+            }
+        }
+
+        .typed-cursor {
+            display: inline-block;
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
             }
         }
     </style>
