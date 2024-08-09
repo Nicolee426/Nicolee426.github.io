@@ -390,13 +390,12 @@
                         backDelay: 2000,
                         loop: false,
                         smartBackspace: true,
-                        showCursor: false, // Hide the blinking cursor
+                        showCursor: true, // Show the blinking cursor during typing
                         onComplete: (self) => {
                             setTimeout(() => {
-                                self.cursor.remove();  // Remove the cursor after typing is done
                                 self.destroy();  // Destroy instance to reset typed text
-                                setTimeout(fetchHitokoto, 7000); // Fetch next sentence after a delay
-                            }, 7000 - 30 * data.hitokoto.length);
+                                fetchHitokoto(); // Fetch next sentence
+                            }, 7000);
                         },
                         onStringTyped: (arrayPos, self) => {
                             setTimeout(() => {
