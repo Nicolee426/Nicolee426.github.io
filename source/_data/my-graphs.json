@@ -1,0 +1,130 @@
+[
+    {
+      "name": "Projects",
+      "cover": "/images/album1-cover.jpg",
+      "date": "2024",
+      "url_name": "album1",
+      "description": "Welcome to my projects, you can find some interesting photos of outcomes & bugs here.",
+      "album": [
+        {
+          "img_url": "/images/photo1-1.jpg",
+          "describe": "超绝智华复习ccst9049 quiz"
+        },
+        {
+          "img_url": "/images/photo1-2.jpg",
+          "describe": "Avatar created by blender 捏脸参考物是我hhhh, 会动的翅膀好评"
+        },
+        {
+          "img_url": "/images/photo1-3.jpg",
+          "describe": "Tools: Openbrush,Quest3; 抽象派作品, 虽然表现的不太出来但是我对银翼杀手2049和爱死机的喜欢是真的"
+        },
+        {
+            "img_url": "/images/photo1-4.jpg",
+            "describe": "Simulation Project Bugs. lovelyyy"
+        }        
+      ]
+    },
+    {
+      "name": "Backtesting",
+      "cover": "/images/album2-cover.jpg",
+      "date": "2024-08",
+      "url_name": "album2",
+      "description": "Welcome to my journey into quant. You can find some beautiful backtesting visualizations here.划重点:此处的beautiful hope不是只有颜色和线条，还有高Sharpe高Returns的beautiful performance.正在努力探索这样的策略:)",
+      "album": [
+        {
+          "img_url": "/images/photo2-1.png",
+          "title": "Visualization",
+          "describe": "Momentum Strategy"
+        }
+      ]
+    },
+    {
+      "name": "Photo Dumps",
+      "cover": "/images/album3-cover.jpg",
+      "date": "2024-08",
+      "url_name": "album3",
+      "description": "Photo dumps of my uni life.存一点pyq里没有的照片εïз",
+      "album": [
+        {
+          "img_url": "/images/photo3-1.jpg",
+          "describe": "Yr1 Uni Life with Friends"
+        },
+        {
+          "img_url": "/images/photo3-2.jpg",
+          "describe": "Some stunning sky photos"
+        },
+        {
+          "img_url": "/images/photo3-3.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-4.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-5.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-6.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-7.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-8.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-9.jpg",
+          "describe": "Test"
+        },
+        {
+          "img_url": "/images/photo3-10.jpg",
+          "describe": "Test"
+        }
+      ]
+    },
+    {
+      "name": "Movies",
+      "cover": "/images/album4-cover.jpg",
+      "date": "2024-08",
+      "url_name": "album4",
+      "description": "A Hopeless romantic.",
+      "album": [
+        {
+          "img_url": "/images/photo4-1.jpg",
+          "title": "Twilight",
+          "describe": "No measure of time with you will be long enough, \nso let's start with forever."
+        },
+        {
+          "img_url": "/images/photo4-2.jpg",
+          "title": "The Vampire Diaries",
+          "describe": "In death comes peace. But pain is the cost of living. \nLike love, it's how we know we're alive."
+        },
+        {
+          "img_url": "/images/photo4-3.jpg",
+          "title": "A Beautiful Mind",
+          "describe": "Well, how big is the universe?\n-Infinite.-How do you know?\nBecause all the data indicate it.\n-It hasn't been proven?-No.\nYou haven't seen. How do you know for sure?\nI don't, I just believe it.\nIt's the same with love, I guess."
+        },
+        {
+          "img_url": "/images/photo4-4.jpg",
+          "title": "Dune",
+          "describe": "The mystery of life isn't a problem to solve but a reality to experience.\nA process that cannot be understood by stopping it.\nWe must move with the flow of the process.\nWe must join it.\nWe must flow with it."
+        },
+        {
+          "img_url": "/images/photo4-5.jpg",
+          "title": "Interstellar",
+          "describe": "Love is the one thing we're capable of perceiving\nthat transcends dimensions of time and space."
+        },
+        {
+          "img_url": "/images/photo4-6.jpg",
+          "title": "Inception",
+          "describe": "So do you want to take a leap of faith\nor become an old man, filled with regret waiting to die alone?"
+        }
+      ]
+    }
+  ]
+  
