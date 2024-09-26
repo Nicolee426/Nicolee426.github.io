@@ -3,9 +3,12 @@ title: 5 Methods for Implementing Signal Standardization
 tags:
   - Quant
 date: 2024-08-23 14:40:22
+sticky: 10
 ---
 
 ### Introduction
+Updated on 26/9: Really surprised that my mentor texted me and told me that my normalized method has improved their factors' performances. Hence for safety concern, I decide to close method 5 from now on:）I guess later in the reading week, when I'm not that busy for my studying, I can spare some time working on some posts again.
+
 The raw signals generated from different logics and data sources can vary greatly, with differing value ranges. To better compare these signals in later stages and facilitate their integration into machine learning models, signal standardization is necessary. In long-short strategies, the sign of the signal typically indicates whether to go long or short, while the magnitude of the signal determines the position size. Therefore, a range of [-1,1] (where all signal values are mapped to this interval) is selected to achieve this standardization goal.
 The following sections will discuss several commonly used signal standardization methods and their applicability in different scenarios. For demonstration purposes, the momentum of the *** Index is chosen as the raw signal in the subsequent discussion.
 
@@ -41,28 +44,7 @@ The calculation formula of Z-score is as follows:![image.png](images/post2-4.png
 The results are as follows:
 ![image.png](images/post2-5.png)
 According to the backtesting statistics, Z-score processing significantly reduced the turnover rate. However, for momentum factors, the performance was not as ideal.
-### Method 5: Using Logarithmic/Exponential Transformations to Construct Positions
-This section focuses on this method, which has demonstrated superior performance across various factors in testing. The discussion will cover the construction logic, mathematical principles, code implementation, and backtesting statistics.
-
-- Scope of Application: This method requires that the signal is not a simple binary signal (e.g., moving average cross strategy) but one where the strength of the signal (which translates to position size) is influenced by the magnitude of deviation from a critical condition.
-- Construction Logic: Two key principles when standardizing signals are to preserve the characteristics of the original signal as much as possible while ensuring the position distribution aligns with market logic within the range of [-1,1].
-
-The method builds upon a commonly used normalization approach, expressed as follows:
-                                             ![image.png](images/post2-6.png)
-To map the standardized signal from [0,1] to [−1,1], we naturally consider: ***
-To align with market logic, we want the signal's sign to correspond to the direction of the trade (long/short). Therefore, it's necessary to preprocess the original signal. For the momentum signal in this example, no additional preprocessing is needed since the signa's construction already aligns with this logic.
-To highlight the original signal's characteristics, with the sign extracted, we explore three transformation scenarios and derive the mathematical expressions accordingly:
-
-- If the signal is linearly distributed: ![image.png](images/post2-8-1.png)
-- If the signal is concentrated near 0 with small absolute values, logarithmic transformation is used to amplify differences:![image.png](images/post2-8-2.png)
-- If the signal is concentrated at large absolute values, exponential transformation is used to amplify differences: ![image.png](images/post2-8-3.png)
-
-These transformations follow a consistent logic. For the momentum signal, since the distribution is concentrated near 0, we use a logarithmic transformation. Given that the domain of the logarithmic function does not include 0, we perform the following transformation:
-                                                 ![image.png](images/post2-9.png)
-In summary, for the momentum signal, the logarithmic transformation standardization function is:
-    *omitted from here.
-Substituting the momentum signal gives:
-    *omitted from here.
+### Method 5: Using *** Transformations to Construct Positions
 The results are as follows:
 ![image.png](images/post2-10.png)
-Compared to the backtesting statistics of the previous methods, Method 5 (logarithmic transformation) achieves the highest Sharpe ratio and the lowest turnover rate, making it the best-performing approach.
+Compared to the backtesting statistics of the previous methods, Method 5 achieves the highest Sharpe ratio and the lowest turnover rate, making it the best-performing approach.
